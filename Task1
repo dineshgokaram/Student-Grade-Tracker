@@ -1,0 +1,64 @@
+# student_grade_tracker.py
+
+def get_student_grades():
+    """Function to input grades for subjects or assignments."""
+    print("Enter grades for subjects/assignments. Type 'done' when finished.")
+    grades = {}
+    while True:
+        subject = input("Enter subject/assignment name: ").strip()
+        if subject.lower() == 'done':
+            break
+        try:
+            grade = float(input(f"Enter grade for {subject}: "))
+            if 0 <= grade <= 100:
+                grades[subject] = grade
+            else:
+                print("Grade should be between 0 and 100. Try again.")
+        except ValueError:
+            print("Invalid input. Please enter a numeric grade.")
+    return grades
+
+def calculate_average(grades):
+    """Function to calculate the average grade."""
+    if not grades:
+        return 0
+    return sum(grades.values()) / len(grades)
+
+def determine_letter_grade(average):
+    """Function to determine the letter grade based on the average."""
+    if average >= 90:
+        return 'A'
+    elif average >= 80:
+        return 'B'
+    elif average >= 70:
+        return 'C'
+    elif average >= 60:
+        return 'D'
+    else:
+        return 'F'
+
+def main():
+    print("Welcome to the Student Grade Tracker!")
+    grades = get_student_grades()
+    if not grades:
+        print("No grades entered. Exiting program.")
+        return
+    
+    average = calculate_average(grades)
+    letter_grade = determine_letter_grade(average)
+
+    print("\n--- Grade Report ---")
+    for subject, grade in grades.items():
+        print(f"{subject}: {grade:.2f}")
+    print(f"Average Grade: {average:.2f}")
+    print(f"Letter Grade: {letter_grade}")
+
+    if average >= 90:
+        print("Excellent work!")
+    elif average >= 70:
+        print("Good effort! Keep improving!")
+    else:
+        print("You need to work harder to improve your grades.")
+
+if __name__ == "__main__":
+    main()
