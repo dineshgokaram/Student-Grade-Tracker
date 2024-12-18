@@ -78,5 +78,8 @@ Integration of GPA calculations.
 
 Addition of a graphical user interface (GUI).
 
+![Screenshot 2024-12-18 192450](https://github.com/user-attachments/assets/05544d96-2037-4b0d-95c8-f8e696063b6b)
+
+
 
 
